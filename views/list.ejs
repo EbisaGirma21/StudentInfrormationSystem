@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD for Student</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+
+<body>
+
+    <div class="box" id="heading">
+        <h1>Student Management </h1>
+    </div>
+
+    <div class="box">
+
+        <table>
+            <thead>
+                <tr>
+
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <% newStudentList.forEach(function(stud){ %>
+
+                <tbody>
+                    <tr>
+
+                        <td>
+                            <%= stud.firstName%>
+                        </td>
+                        <td>
+                            <%=stud.lastName %>
+                        </td>
+                        <form action="/delete" method="post">
+                            <td><button type="submit" name="deleteBtn" value="<%=stud._id%>"
+                                    onClick="this.form.submit()">Delete</button> </td>
+                        </form>
+                        <form action="/update" method="post">
+                            <td><button type="submit" name="updateBtn" value="<%=stud._id%>"
+                                    onClick="this.form.submit()">Update</button></td>
+                        </form>
+                    </tr>
+                </tbody>
+
+                <% }) %>
+        </table>
+
+
+
+
+
+        <form class=" item" action="/" method="post">
+            <input type="text" name="newFirstName">
+            <input type="text" name="newLastName">
+            <button type="submit" name="button">Add</button>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
